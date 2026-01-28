@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import { useNavigationType } from 'react-router';
 
-type NavType = 'forward' | 'back' | 'tab';
+type NavType = 'forward' | 'back' | 'tab' | 'modal';
 
 interface NavigationContextType {
   navType: NavType;

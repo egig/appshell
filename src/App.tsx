@@ -7,6 +7,9 @@ import { Explore } from './pages/Explore';
 import { ExploreDetail } from './pages/ExploreDetail';
 import { Profile } from './pages/Profile';
 import { ProfileSettings } from './pages/ProfileSettings';
+import { ModalDemo } from './pages/ModalDemo';
+import { FormExample } from './pages/FormExample';
+import { Features } from './pages/Features';
 import { PageTransition } from './components/PageTransition';
 import { useLocation } from 'react-router';
 import { NavigationProvider } from './contexts/NavigationContext';
@@ -52,6 +55,14 @@ function AppRoutes() {
             }
           />
           <Route
+            path="features"
+            element={
+              <PageTransition>
+                <Features />
+              </PageTransition>
+            }
+          />
+          <Route
             path="profile"
             element={
               <PageTransition>
@@ -66,6 +77,26 @@ function AppRoutes() {
                 <ProfileSettings />
               </PageTransition>
             }
+          />
+          <Route
+            path="modal-demo"
+            element={
+              <PageTransition>
+                <ModalDemo />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="modal-demo/:type"
+            element={
+              <PageTransition>
+                <ModalDemo />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="form-example"
+            element={<FormExample />}
           />
         </Route>
       </Routes>

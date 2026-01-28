@@ -1,20 +1,28 @@
 import { useNavigate } from 'react-router';
 import { useNavigation } from '../contexts/NavigationContext';
 
-const discoveries = [
-  { id: 'trending', title: 'Trending Topics', icon: '🔥' },
-  { id: 'new', title: 'New Releases', icon: '✨' },
-  { id: 'popular', title: 'Most Popular', icon: '⭐' },
-  { id: 'recommended', title: 'Recommended for You', icon: '💡' },
+const items = [
+  { id: 'trending', title: 'Trending Topics', description: 'See what\'s hot right now' },
+  { id: 'new', title: 'New Releases', description: 'Fresh content just for you' },
+  { id: 'popular', title: 'Most Popular', description: 'All-time favorites' },
+  { id: 'recommended', title: 'Recommended', description: 'Personalized picks' },
+  { id: 'featured', title: 'Featured Content', description: 'Editor\'s choice' },
 ];
 
 export function Explore() {
   const navigate = useNavigate();
   const { setNavType } = useNavigation();
 
-  const handleDiscoveryClick = (id: string) => {
+  const handleItemClick = (id: string) => {
     setNavType('forward');
     navigate(`/explore/${id}`);
+  };
+
+  const handleModalDemo = () => {
+    setNavType('modal');
+    navigate('/modal-demo', {
+      state: { navType: 'modal' }
+    });
   };
 
   return (
@@ -22,19 +30,28 @@ export function Explore() {
       <div className="safe-top safe-x">
         <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Explore</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Discover new and interesting content
+          Tap any item below to navigate to its detail page
         </p>
-        <div className="grid grid-cols-2 gap-3 pb-6">
-          {discoveries.map((discovery) => (
+        
+        {/* Modal Demo Button */}
+        <button
+          onClick={handleModalDemo}
+          className="w-full mb-6 p-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg shadow-sm font-medium active:scale-[0.98] transition-transform"
+        >
+          🎭 Try Modal Navigation Demo
+        </button>
+        
+        <div className="space-y-3 pb-6">
+          {items.map((item) => (
             <button
-              key={discovery.id}
-              onClick={() => handleDiscoveryClick(discovery.id)}
-              className="p-6 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800 active:scale-[0.98] transition-transform flex flex-col items-center text-center"
+              key={item.id}
+              onClick={() => handleItemClick(item.id)}
+              className="w-full text-left p-4 bg-white dark:bg-gray-900 rounded-lg shadow-sm border border-gray-200 dark:border-gray-800 active:scale-[0.98] transition-transform"
             >
-              <span className="text-4xl mb-3">{discovery.icon}</span>
-              <h3 className="font-semibold text-sm text-gray-900 dark:text-white">
-                {discovery.title}
+              <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
+                {item.title}
               </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{item.description}</p>
             </button>
           ))}
         </div>

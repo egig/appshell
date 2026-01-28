@@ -27,6 +27,23 @@ export function ExploreDetail() {
   const { id } = useParams<{ id: string }>();
   const data = categoryData[id || 'trending'];
 
+  if (!data) {
+    return (
+      <div className="h-full scroll-area">
+        <div className="safe-top safe-x">
+          <div className="pt-8 text-center">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Category Not Found
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400">
+              The category you're looking for doesn't exist.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="h-full scroll-area">
       <div className="safe-top safe-x">

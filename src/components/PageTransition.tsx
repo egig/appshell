@@ -12,8 +12,8 @@ export function PageTransition({ children }: PageTransitionProps) {
   const { navType, setNavType } = useNavigation();
   const stateNavType = (location.state as { navType?: string })?.navType;
 
-  // Use context navType, but allow location state to override for tab switches
-  const currentNavType = stateNavType === 'tab' ? 'tab' : navType;
+  // Use context navType, but allow location state to override for tab switches and modals
+  const currentNavType = stateNavType === 'tab' ? 'tab' : stateNavType === 'modal' ? 'modal' : navType;
 
   // Reset navType to forward after animation completes
   useEffect(() => {
@@ -43,6 +43,12 @@ export function PageTransition({ children }: PageTransitionProps) {
       initial: { opacity: 0 },
       animate: { opacity: 1 },
       exit: { opacity: 0 },
+    },
+    // Modal presentation
+    modal: {
+      initial: { y: '100%', opacity: 0 },
+      animate: { y: 0, opacity: 1 },
+      exit: { y: '100%', opacity: 0 },
     },
   };
 

@@ -27,6 +27,23 @@ export function ProfileSettings() {
   const { id } = useParams<{ id: string }>();
   const data = pageData[id || 'settings'];
 
+  if (!data) {
+    return (
+      <div className="h-full scroll-area">
+        <div className="safe-top safe-x">
+          <div className="pt-8 text-center">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              Page Not Found
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400">
+              The settings page you're looking for doesn't exist.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const options = [
     'Push notifications',
     'Email updates',
