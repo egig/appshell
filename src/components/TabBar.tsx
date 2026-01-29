@@ -3,9 +3,8 @@ import { Button } from './Button';
 
 const tabs = [
   { path: '/home', label: 'Home', icon: '🏠' },
-  { path: '/explore', label: 'Explore', icon: '🔍' },
   { path: '/examples', label: 'Examples', icon: '🧪' },
-  { path: '/templates', label: 'Templates', icon: '�' },
+  { path: '/templates', label: 'Templates', icon: '📋' },
 ];
 
 export function TabBar() {

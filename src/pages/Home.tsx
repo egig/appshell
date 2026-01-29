@@ -15,13 +15,6 @@ export function Home() {
   
   const quickActions: QuickAction[] = [
     { 
-      id: 'explore', 
-      title: 'Explore Features', 
-      description: 'Browse all available features and demos',
-      icon: '🔍',
-      path: '/home/explore'
-    },
-    { 
       id: 'examples', 
       title: 'View Examples', 
       description: 'See components and patterns in action',
@@ -41,7 +34,7 @@ export function Home() {
       title: 'Try Form', 
       description: 'Test mobile-friendly form with all input types',
       icon: '📝',
-      path: '/form-example'
+      path: '/standalone/form-example'
     }
   ];
 

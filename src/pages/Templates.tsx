@@ -18,46 +18,47 @@ interface TemplateCategory {
 
 const templateCategories: TemplateCategory[] = [
   {
-    id: 'user-profiles',
-    title: 'User Profiles',
-    description: 'Different user profile layouts and components',
-    icon: '👤',
+    id: 'mobile-crud',
+    title: 'Mobile CRUD Interfaces',
+    description: 'Touch-friendly CRUD operations for mobile apps',
+    icon: '📱',
     templates: [
-      { id: 'profile', title: 'User Profile', description: 'Standard user profile page', path: '/templates/profile' },
-      { id: 'settings', title: 'Profile Settings', description: 'User settings and preferences', path: '/templates/profile/settings' }
+      { id: 'mobile-list-crud', title: 'Mobile List CRUD', description: 'Swipeable list with add/edit/delete actions', path: '/templates/mobile-list-crud' },
+      { id: 'mobile-form-crud', title: 'Mobile Form CRUD', description: 'Optimized forms with mobile input patterns', path: '/templates/mobile-form-crud' },
+      { id: 'mobile-cards-crud', title: 'Mobile Card CRUD', description: 'Touch-friendly card interface with actions', path: '/templates/mobile-cards-crud' }
     ]
   },
   {
-    id: 'forms',
-    title: 'Form Templates',
-    description: 'Various form layouts and input patterns',
-    icon: '📝',
+    id: 'mobile-navigation',
+    title: 'Mobile Navigation',
+    description: 'Mobile-first navigation patterns and flows',
+    icon: '🧭',
     templates: [
-      { id: 'contact', title: 'Contact Form', description: 'Contact and feedback forms', path: '/templates/contact' },
-      { id: 'survey', title: 'Survey Form', description: 'Survey and questionnaire forms', path: '/templates/survey' },
-      { id: 'registration', title: 'Registration', description: 'User registration forms', path: '/templates/registration' }
+      { id: 'tab-navigation', title: 'Tab Navigation UI', description: 'Bottom tab navigation with gesture support', path: '/templates/tab-navigation' },
+      { id: 'drawer-navigation', title: 'Drawer Navigation', description: 'Slide-out navigation menu for mobile', path: '/templates/drawer-navigation' },
+      { id: 'stack-navigation', title: 'Stack Navigation', description: 'Mobile stack-based navigation flow', path: '/templates/stack-navigation' }
     ]
   },
   {
-    id: 'content',
-    title: 'Content Layouts',
-    description: 'Different content presentation patterns',
-    icon: '📄',
+    id: 'mobile-input',
+    title: 'Mobile Input Patterns',
+    description: 'Mobile-optimized input and interaction patterns',
+    icon: '👆',
     templates: [
-      { id: 'article', title: 'Article Layout', description: 'Blog post and article layouts', path: '/templates/article' },
-      { id: 'gallery', title: 'Image Gallery', description: 'Photo and media galleries', path: '/templates/gallery' },
-      { id: 'list', title: 'List Views', description: 'Various list and table layouts', path: '/templates/list' }
+      { id: 'mobile-forms', title: 'Mobile Forms', description: 'Touch-friendly forms with mobile keyboards', path: '/templates/mobile-forms' },
+      { id: 'mobile-search', title: 'Mobile Search UI', description: 'Voice and text search with filters', path: '/templates/mobile-search' },
+      { id: 'mobile-media', title: 'Mobile Media Upload', description: 'Camera and gallery integration', path: '/templates/mobile-media' }
     ]
   },
   {
-    id: 'commerce',
-    title: 'E-commerce',
-    description: 'Shopping and product display templates',
-    icon: '🛒',
+    id: 'mobile-layouts',
+    title: 'Mobile Layouts',
+    description: 'Responsive layouts optimized for mobile screens',
+    icon: '�',
     templates: [
-      { id: 'product', title: 'Product Page', description: 'Product detail and showcase', path: '/templates/product' },
-      { id: 'checkout', title: 'Checkout Flow', description: 'Shopping cart and checkout', path: '/templates/checkout' },
-      { id: 'catalog', title: 'Product Catalog', description: 'Product listing and search', path: '/templates/catalog' }
+      { id: 'mobile-dashboard', title: 'Mobile Dashboard', description: 'Compact dashboard with swipe gestures', path: '/templates/mobile-dashboard' },
+      { id: 'mobile-feed', title: 'Mobile Feed Layout', description: 'Infinite scroll feed with pull-to-refresh', path: '/templates/mobile-feed' },
+      { id: 'mobile-cards', title: 'Mobile Card Grid', description: 'Touch-optimized card grid layout', path: '/templates/mobile-cards' }
     ]
   }
 ];
@@ -126,7 +127,7 @@ export function Templates() {
       <div className="safe-top safe-x">
         <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Templates</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Ready-to-use page templates and layouts for common app patterns
+          Mobile-ready templates with touch interactions, gestures, and responsive layouts
         </p>
         
         <div className="space-y-6 pb-6">

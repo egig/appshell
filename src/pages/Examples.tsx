@@ -20,43 +20,44 @@ interface ExampleCategory {
 const exampleCategories: ExampleCategory[] = [
   {
     id: 'navigation',
-    title: 'Navigation Examples',
-    description: 'Different navigation patterns and components',
+    title: 'Navigation Features',
+    description: 'Learn how to use navigation components and patterns',
     icon: '🧭',
     examples: [
-      { id: 'navbar', title: 'Navbar Component', description: 'Reusable navbar with back button', path: '/examples/navbar' },
-      { id: 'custom-back', title: 'Custom Back Button', description: 'Override default back behavior', path: '/examples/custom-back' }
+      { id: 'navbar', title: 'Navbar Usage', description: 'How to implement a navigation bar with back button', path: '/examples/navbar' },
+      { id: 'custom-back', title: 'Custom Back Navigation', description: 'Override default back behavior for custom flows', path: '/examples/custom-back' },
+      { id: 'button-link', title: 'Navigation Buttons', description: 'Create navigation-aware buttons and links', path: '/examples/button-link' }
     ]
   },
   {
-    id: 'components',
-    title: 'UI Components',
-    description: 'Reusable UI components and patterns',
+    id: 'ui-components',
+    title: 'UI Component Features',
+    description: 'Explore reusable UI components and their usage',
     icon: '🎨',
     examples: [
-      { id: 'feature-card', title: 'FeatureCard Component', description: 'Customizable feature cards', path: '/examples/feature-card' },
-      { id: 'button', title: 'Button & Link', description: 'Navigation-aware buttons', path: '/examples/button-link' },
-      { id: 'list-view', title: 'Mobile List View', description: 'Touch-friendly list components', path: '/examples/list-view' }
+      { id: 'feature-card', title: 'FeatureCard Usage', description: 'How to use customizable feature cards', path: '/examples/feature-card' },
+      { id: 'list-view', title: 'Mobile-Optimized Lists', description: 'Implement touch-friendly list components', path: '/examples/list-view' }
     ]
   },
   {
-    id: 'patterns',
-    title: 'App Patterns',
-    description: 'Common mobile app patterns',
-    icon: '📱',
+    id: 'interactions',
+    title: 'Interaction Features',
+    description: 'User interaction patterns and behaviors',
+    icon: '�',
     examples: [
-      { id: 'modal', title: 'Modal Demo', description: 'Modal presentations', path: '/modal-demo' },
-      { id: 'form', title: 'Form Example', description: 'Mobile-friendly forms', path: '/form-example' }
+      { id: 'modal', title: 'Modal Presentations', description: 'How to use modal navigation patterns', path: '/modal-demo' },
+      { id: 'animations', title: 'Page Transitions', description: 'Implement smooth navigation animations', path: '/examples/animations' },
+      { id: 'state', title: 'Navigation State', description: 'Manage navigation state and history', path: '/examples/state' }
     ]
   },
   {
-    id: 'advanced',
-    title: 'Advanced Examples',
-    description: 'Complex interactions and features',
-    icon: '⚡',
+    id: 'data-handling',
+    title: 'Data Handling Features',
+    description: 'Working with data in mobile applications',
+    icon: '📊',
     examples: [
-      { id: 'animations', title: 'Page Transitions', description: 'Smooth navigation animations', path: '/examples/animations' },
-      { id: 'state', title: 'State Management', description: 'Navigation state patterns', path: '/examples/state' }
+      { id: 'todo', title: 'Todo Management', description: 'CRUD operations with state management', path: '/examples/todo' },
+      { id: 'form', title: 'Form Handling', description: 'Mobile-friendly form implementation', path: '/form-example' }
     ]
   }
 ];
@@ -125,7 +126,7 @@ export function Examples() {
       <div className="safe-top safe-x">
         <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Examples</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Explore different components, patterns, and features of this app shell
+          Learn how to use specific features and components in your mobile applications
         </p>
         
         <div className="space-y-6 pb-6">

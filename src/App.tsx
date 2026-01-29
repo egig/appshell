@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import { AnimatePresence } from 'framer-motion';
 import { TabLayout } from './layouts/TabLayout';
+import { StandaloneLayout } from './layouts/StandaloneLayout';
 import { Home } from './pages/Home';
 import { HomeDetail } from './pages/HomeDetail';
-import { Explore } from './pages/Explore';
-import { ExploreDetail } from './pages/ExploreDetail';
 import { ModalDemo } from './pages/ModalDemo';
 import { FormExample } from './pages/FormExample';
 import { Features } from './pages/Features';
@@ -17,6 +16,7 @@ import { TemplateProfile } from './pages/TemplateProfile';
 import { TemplateProfileSettings } from './pages/TemplateProfileSettings';
 import { TemplateContact } from './pages/TemplateContact';
 import { TemplateArticle } from './pages/TemplateArticle';
+import { MobileListCRUD } from './pages/MobileListCRUD';
 import { ButtonLinkExample } from './pages/ButtonLinkExample';
 import { AnimationsExample } from './pages/AnimationsExample';
 import { StateExample } from './pages/StateExample';
@@ -32,6 +32,7 @@ function AppRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        {/* Routes with TabLayout */}
         <Route path="/" element={<TabLayout />}>
           <Route index element={<Navigate to="/home" replace />} />
           <Route
@@ -47,18 +48,6 @@ function AppRoutes() {
             element={
               <PageTransition>
                 <HomeDetail />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="explore"
-            element={<Explore />}
-          />
-          <Route
-            path="explore/:id"
-            element={
-              <PageTransition>
-                <ExploreDetail />
               </PageTransition>
             }
           />
@@ -107,6 +96,14 @@ function AppRoutes() {
             element={
               <PageTransition>
                 <TemplateArticle />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="templates/mobile-list-crud"
+            element={
+              <PageTransition>
+                <MobileListCRUD />
               </PageTransition>
             }
           />
@@ -198,6 +195,10 @@ function AppRoutes() {
               </PageTransition>
             }
           />
+        </Route>
+
+        {/* Routes with StandaloneLayout */}
+        <Route path="/standalone" element={<StandaloneLayout />}>
           <Route
             path="form-example"
             element={<FormExample />}
