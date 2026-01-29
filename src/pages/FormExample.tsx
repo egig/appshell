@@ -79,19 +79,21 @@ export function FormExample() {
   return (
     <div className="flex flex-col h-screen bg-gray-50 dark:bg-black">
       {/* Top Navbar */}
-      <header className="flex items-center justify-between px-4 py-3 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 safe-top">
+      <header className="flex items-center justify-between px-4 py-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 safe-top">
         <button
           onClick={handleCancel}
-          className="px-4 py-2 text-blue-600 dark:text-blue-400 font-medium active:scale-95 transition-transform"
+          className="flex items-center justify-center px-4 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg transition-opacity no-select active:scale-95 transition-transform"
+          aria-label="Cancel"
         >
-          Cancel
+          <span className="text-blue-600 dark:text-blue-400 font-medium">Cancel</span>
         </button>
         <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Form Example</h1>
         <button
           onClick={handleSubmit}
-          className="px-4 py-2 text-blue-600 dark:text-blue-400 font-medium active:scale-95 transition-transform"
+          className="flex items-center justify-center px-4 py-2 bg-blue-600/90 dark:bg-blue-500/90 backdrop-blur-sm rounded-full shadow-lg transition-opacity no-select active:scale-95 transition-transform"
+          aria-label="Submit"
         >
-          Submit
+          <span className="text-white font-medium">Submit</span>
         </button>
       </header>
 
