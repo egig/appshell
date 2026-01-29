@@ -1,6 +1,15 @@
-import { CardButton, Button } from '../components';
+import { Button, ListView } from '../components';
+import { useNavigate } from 'react-router';
 
-const exploreSections = [
+interface ExploreItem {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  path: string;
+}
+
+const exploreSections: ExploreItem[] = [
   {
     id: 'features',
     title: 'Feature List',
@@ -46,6 +55,47 @@ const exploreSections = [
 ];
 
 export function Explore() {
+  const navigate = useNavigate();
+  
+  const handleExploreClick = (item: ExploreItem) => {
+    navigate(item.path);
+  };
+
+  const renderExploreItem = (item: { id: string; data: ExploreItem }) => {
+    const exploreItem = item.data;
+    return (
+      <div className="p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3 flex-1 min-w-0">
+            <span className="text-2xl">{exploreItem.icon}</span>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-semibold text-gray-900 dark:text-white truncate">
+                {exploreItem.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 truncate">
+                {exploreItem.description}
+              </p>
+            </div>
+          </div>
+          <div className="flex-shrink-0 ml-3">
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <div className="h-full scroll-area">
       <div className="safe-top safe-x">
@@ -74,17 +124,12 @@ export function Explore() {
         </div>
         
         {/* Other Explore Options */}
-        <div className="space-y-3 pb-6">
-          {exploreSections.slice(1).map((item) => (
-            <CardButton
-              key={item.id}
-              to={item.path}
-              title={item.title}
-              description={item.description}
-              icon={item.icon}
-            />
-          ))}
-        </div>
+        <ListView
+          items={exploreSections.slice(1).map(item => ({ id: item.id, data: item }))}
+          renderItem={renderExploreItem}
+          onItemClick={(item: { id: string; data: ExploreItem }) => handleExploreClick(item.data)}
+          itemClassName="cursor-pointer hover:border-blue-200 dark:hover:border-blue-800"
+        />
 
         {/* Demo Actions */}
         <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800">

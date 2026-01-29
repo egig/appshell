@@ -1,6 +1,22 @@
-import { CardButton } from '../components';
+import { ListView } from '../components/ListView';
+import { useNavigate } from 'react-router';
 
-const templateCategories = [
+interface Template {
+  id: string;
+  title: string;
+  description: string;
+  path: string;
+}
+
+interface TemplateCategory {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  templates: Template[];
+}
+
+const templateCategories: TemplateCategory[] = [
   {
     id: 'user-profiles',
     title: 'User Profiles',
@@ -47,6 +63,64 @@ const templateCategories = [
 ];
 
 export function Templates() {
+  const navigate = useNavigate();
+
+  const handleTemplateClick = (template: Template) => {
+    navigate(template.path);
+  };
+
+  const renderTemplateItem = (item: { id: string; data: Template }) => {
+    const template = item.data;
+    return (
+      <div className="p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex-1 min-w-0">
+            <h3 className="font-semibold text-gray-900 dark:text-white truncate">
+              {template.title}
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 truncate">
+              {template.description}
+            </p>
+          </div>
+          <div className="flex-shrink-0 ml-3">
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderQuickStartItem = (item: { id: string; data: Template }) => {
+    const template = item.data;
+    return (
+      <div className="p-3">
+        <div className="flex flex-col items-center text-center">
+          <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold mb-2">
+            {template.title.charAt(0)}
+          </div>
+          <h3 className="font-medium text-gray-900 dark:text-white text-sm">
+            {template.title}
+          </h3>
+          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+            {template.description}
+          </p>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="h-full scroll-area">
       <div className="safe-top safe-x">
@@ -70,17 +144,12 @@ export function Templates() {
                 </div>
               </div>
               
-              <div className="space-y-3 ml-11">
-                {category.templates.map((template) => (
-                  <CardButton
-                    key={template.id}
-                    to={template.path}
-                    title={template.title}
-                    description={template.description}
-                    className="text-sm"
-                  />
-                ))}
-              </div>
+              <ListView
+                items={category.templates.map(template => ({ id: template.id, data: template }))}
+                renderItem={renderTemplateItem}
+                onItemClick={(item) => handleTemplateClick(item.data)}
+                itemClassName="cursor-pointer hover:border-green-200 dark:hover:border-green-800"
+              />
             </div>
           ))}
         </div>
@@ -91,20 +160,16 @@ export function Templates() {
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             Start with the most commonly used templates:
           </p>
-          <div className="grid grid-cols-2 gap-3">
-            <CardButton
-              to="/templates/profile"
-              title="👤 Profile"
-              description="User profile page"
-              className="text-sm"
-            />
-            <CardButton
-              to="/templates/contact"
-              title="📝 Contact"
-              description="Contact form"
-              className="text-sm"
-            />
-          </div>
+          <ListView
+            items={[
+              { id: 'profile', data: { id: 'profile', title: '👤 Profile', description: 'User profile page', path: '/templates/profile' }},
+              { id: 'contact', data: { id: 'contact', title: '📝 Contact', description: 'Contact form', path: '/templates/contact' }}
+            ]}
+            renderItem={renderQuickStartItem}
+            onItemClick={(item) => handleTemplateClick(item.data)}
+            className="grid grid-cols-2 gap-3"
+            itemClassName="cursor-pointer hover:border-green-200 dark:hover:border-green-800"
+          />
         </div>
       </div>
     </div>

@@ -49,12 +49,63 @@ export function TodoModal({ isOpen, onClose, onSubmit, editingTodo }: TodoModalP
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="p-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          {editingTodo ? 'Edit Todo' : 'Add New Todo'}
-        </h2>
-        
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="flex flex-col h-full">
+        {/* Header with buttons */}
+        <div className="flex items-center justify-between px-4 py-3 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+          {/* Left: Cancel Button */}
+          <div className="w-16 flex justify-start">
+            <button
+              onClick={onClose}
+              className="flex items-center justify-center w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg transition-opacity no-select active:scale-95 transition-transform"
+              aria-label="Cancel"
+            >
+              <svg
+                className="w-6 h-6 text-gray-900"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Center: Title */}
+          <div className="flex-1 text-center">
+            <h2 className="text-lg font-semibold text-gray-900 truncate">
+              {editingTodo ? 'Edit Todo' : 'Add Todo'}
+            </h2>
+          </div>
+
+          {/* Right: Submit Button */}
+          <div className="w-16 flex justify-end">
+            <button
+              type="submit"
+              form="todo-form"
+              disabled={!formData.title.trim()}
+              className="flex items-center justify-center w-10 h-10 bg-blue-600/90 backdrop-blur-sm rounded-full shadow-lg transition-opacity no-select active:scale-95 transition-transform disabled:bg-gray-300 disabled:cursor-not-allowed"
+              aria-label={editingTodo ? 'Update' : 'Add'}
+            >
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Form Content */}
+        <form id="todo-form" onSubmit={handleSubmit} className="flex-1 p-6 space-y-4">
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
               Title *
@@ -82,23 +133,6 @@ export function TodoModal({ isOpen, onClose, onSubmit, editingTodo }: TodoModalP
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
               placeholder="Enter todo description (optional)"
             />
-          </div>
-
-          <div className="flex gap-3 pt-4">
-            <button
-              type="submit"
-              disabled={!formData.title.trim()}
-              className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-            >
-              {editingTodo ? 'Update' : 'Add'}
-            </button>
-            <button
-              type="button"
-              onClick={onClose}
-              className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 transition-colors"
-            >
-              Cancel
-            </button>
           </div>
         </form>
       </div>

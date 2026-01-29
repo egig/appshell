@@ -21,6 +21,7 @@ import { ButtonLinkExample } from './pages/ButtonLinkExample';
 import { AnimationsExample } from './pages/AnimationsExample';
 import { StateExample } from './pages/StateExample';
 import { TodoExample } from './pages/TodoExample';
+import { ListViewExample } from './pages/ListViewExample';
 import { PageTransition } from './components/PageTransition';
 import { useLocation } from 'react-router';
 import { NavigationProvider } from './contexts/NavigationContext';
@@ -162,6 +163,14 @@ function AppRoutes() {
             element={
               <PageTransition>
                 <TodoExample />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="examples/list-view"
+            element={
+              <PageTransition>
+                <ListViewExample />
               </PageTransition>
             }
           />

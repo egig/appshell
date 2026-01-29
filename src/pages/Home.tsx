@@ -1,7 +1,19 @@
-import { CardButton, FeatureCard } from '../components';
+import { FeatureCard, ListView } from '../components';
+import { useNavigate } from 'react-router';
+
+interface QuickAction {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  path: string;
+  navType?: 'forward' | 'modal' | 'tab';
+}
 
 export function Home() {
-  const quickActions = [
+  const navigate = useNavigate();
+  
+  const quickActions: QuickAction[] = [
     { 
       id: 'explore', 
       title: 'Explore Features', 
@@ -33,6 +45,46 @@ export function Home() {
     }
   ];
 
+  const handleQuickAction = (action: QuickAction) => {
+    navigate(action.path);
+  };
+
+  const renderQuickAction = (item: { id: string; data: QuickAction }) => {
+    const action = item.data;
+    return (
+      <div className="p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3 flex-1 min-w-0">
+            <span className="text-2xl">{action.icon}</span>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-semibold text-gray-900 dark:text-white truncate">
+                {action.title}
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 truncate">
+                {action.description}
+              </p>
+            </div>
+          </div>
+          <div className="flex-shrink-0 ml-3">
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="h-full scroll-area">
       <div className="safe-top safe-x">
@@ -52,18 +104,12 @@ export function Home() {
         {/* Quick Actions */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Quick Start</h2>
-          <div className="grid grid-cols-1 gap-4">
-            {quickActions.map((action) => (
-              <CardButton
-                key={action.id}
-                to={action.path}
-                navType={action.navType || 'forward'}
-                title={action.title}
-                description={action.description}
-                icon={action.icon}
-              />
-            ))}
-          </div>
+          <ListView
+            items={quickActions.map(action => ({ id: action.id, data: action }))}
+            renderItem={renderQuickAction}
+            onItemClick={(item: { id: string; data: QuickAction }) => handleQuickAction(item.data)}
+            itemClassName="cursor-pointer hover:border-blue-200 dark:hover:border-blue-800"
+          />
         </div>
 
         {/* Features Overview */}
