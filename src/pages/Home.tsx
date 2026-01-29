@@ -1,4 +1,4 @@
-import { CardButton } from '../components';
+import { CardButton, FeatureCard } from '../components';
 
 export function Home() {
   const quickActions = [
@@ -10,11 +10,11 @@ export function Home() {
       path: '/home/explore'
     },
     { 
-      id: 'form', 
-      title: 'Try Form', 
-      description: 'Test mobile-friendly form with all input types',
-      icon: '📝',
-      path: '/home/form'
+      id: 'examples', 
+      title: 'View Examples', 
+      description: 'See components and patterns in action',
+      icon: '🧪',
+      path: '/examples'
     },
     { 
       id: 'modal', 
@@ -25,11 +25,11 @@ export function Home() {
       navType: 'modal' as const
     },
     { 
-      id: 'navbar', 
-      title: 'Navbar Examples', 
-      description: 'See reusable navbar component in action',
-      icon: '🎯',
-      path: '/navbar-example'
+      id: 'form', 
+      title: 'Try Form', 
+      description: 'Test mobile-friendly form with all input types',
+      icon: '📝',
+      path: '/form-example'
     }
   ];
 
@@ -70,26 +70,30 @@ export function Home() {
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Key Features</h2>
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg border border-blue-200 dark:border-blue-800">
-              <span className="text-2xl mb-2 block">🧭</span>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Navigation</h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Tab, Stack, Modal patterns</p>
-            </div>
-            <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg border border-purple-200 dark:border-purple-800">
-              <span className="text-2xl mb-2 block">✨</span>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Animations</h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Smooth transitions</p>
-            </div>
-            <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg border border-green-200 dark:border-green-800">
-              <span className="text-2xl mb-2 block">📱</span>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Mobile First</h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400">PWA ready, safe areas</p>
-            </div>
-            <div className="p-4 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg border border-orange-200 dark:border-orange-800">
-              <span className="text-2xl mb-2 block">🎨</span>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Modern UI</h3>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Glassmorphic design</p>
-            </div>
+            <FeatureCard
+              icon="🧭"
+              title="Navigation"
+              description="Tab, Stack, Modal patterns"
+              variant="blue"
+            />
+            <FeatureCard
+              icon="✨"
+              title="Animations"
+              description="Smooth transitions"
+              variant="purple"
+            />
+            <FeatureCard
+              icon="📱"
+              title="Mobile First"
+              description="PWA ready, safe areas"
+              variant="green"
+            />
+            <FeatureCard
+              icon="🎨"
+              title="Modern UI"
+              description="Glassmorphic design"
+              variant="orange"
+            />
           </div>
         </div>
 
