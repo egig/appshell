@@ -9,7 +9,7 @@ interface NavbarProps {
   className?: string;
 }
 
-const ROOT_PATHS = ['/home', '/explore', '/features', '/profile', '/'];
+const ROOT_PATHS = ['/home', '/explore', '/profile', '/'];
 const FORM_PATHS = ['/form-example'];
 
 export function Navbar({ 

@@ -78,7 +78,7 @@ export function FormExample() {
       {/* Navbar with custom actions */}
       <Navbar
         title="Form Example"
-        showBackButton={false}
+        showBackButton={true}
         rightAction={
           <button
             onClick={handleSubmit}

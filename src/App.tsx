@@ -42,11 +42,7 @@ function AppRoutes() {
           />
           <Route
             path="explore"
-            element={
-              <PageTransition>
-                <Explore />
-              </PageTransition>
-            }
+            element={<Explore />}
           />
           <Route
             path="explore/:id"

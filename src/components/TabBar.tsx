@@ -1,23 +1,17 @@
 import { useLocation } from 'react-router';
-import { useAppNavigation } from '../hooks/useAppNavigation';
+import { Button } from './Button';
 
 const tabs = [
   { path: '/home', label: 'Home', icon: '🏠' },
   { path: '/explore', label: 'Explore', icon: '🔍' },
-  { path: '/features', label: 'Features', icon: '🚀' },
   { path: '/profile', label: 'Profile', icon: '👤' },
 ];
 
 export function TabBar() {
   const location = useLocation();
-  const { goToTab } = useAppNavigation();
 
   const getIsActive = (tabPath: string) => {
     return location.pathname.startsWith(tabPath);
-  };
-
-  const handleTabClick = (path: string) => {
-    goToTab(path);
   };
 
   return (
@@ -31,9 +25,9 @@ export function TabBar() {
         {tabs.map((tab) => {
           const isActive = getIsActive(tab.path);
           return (
-            <button
-              key={tab.path}
-              onClick={() => handleTabClick(tab.path)}
+            <Button
+              to={tab.path}
+              navType="tab"
               className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
                 isActive
                   ? 'text-blue-600 dark:text-blue-400'
@@ -44,7 +38,7 @@ export function TabBar() {
             >
               <span className="text-2xl mb-1">{tab.icon}</span>
               <span className="text-xs font-medium">{tab.label}</span>
-            </button>
+            </Button>
           );
         })}
       </div>
