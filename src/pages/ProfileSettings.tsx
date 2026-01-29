@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import { Navbar } from '../components/Navbar';
 
 const pageData: Record<string, { icon: string; title: string; description: string }> = {
   settings: {
@@ -55,6 +56,8 @@ export function ProfileSettings() {
 
   return (
     <div className="h-full scroll-area">
+      <Navbar title={data.title} />
+      
       <div className="safe-top safe-x">
         <div className="pt-8">
           <div className="flex items-center mb-6">

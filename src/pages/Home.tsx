@@ -1,5 +1,4 @@
-import { useNavigate } from 'react-router';
-import { useNavigation } from '../contexts/NavigationContext';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const items = [
   { id: 1, title: 'First Item', description: 'Tap to see details' },
@@ -10,12 +9,10 @@ const items = [
 ];
 
 export function Home() {
-  const navigate = useNavigate();
-  const { setNavType } = useNavigation();
+  const { goForward } = useAppNavigation();
 
   const handleItemClick = (id: number) => {
-    setNavType('forward');
-    navigate(`/home/${id}`);
+    goForward(`/home/${id}`);
   };
 
   return (

@@ -1,10 +1,13 @@
 import { useParams } from 'react-router';
+import { Navbar } from '../components/Navbar';
 
 export function HomeDetail() {
   const { id } = useParams<{ id: string }>();
 
   return (
     <div className="h-full scroll-area">
+      <Navbar title={`Item ${id}`} />
+      
       <div className="safe-top safe-x">
         <div className="pt-8">
           <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 mb-6 text-white">

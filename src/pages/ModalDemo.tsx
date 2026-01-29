@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useNavigation } from '../contexts/NavigationContext';
+import { Navbar } from '../components/Navbar';
 import { Modal } from '../components/Modal';
 
 const demoItems = [
@@ -147,6 +148,8 @@ export function ModalDemo() {
 
   return (
     <div className="h-full scroll-area">
+      <Navbar title="Modal Demo" />
+      
       <div className="safe-top safe-x">
         <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Modal Demo</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-6">

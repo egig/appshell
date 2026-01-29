@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useAppNavigation } from '../hooks/useAppNavigation';
+import { Navbar } from '../components/Navbar';
 
 interface FormData {
   text: string;
@@ -26,7 +27,7 @@ interface FormData {
 }
 
 export function FormExample() {
-  const navigate = useNavigate();
+  const { goBack } = useAppNavigation();
   
   const [formData, setFormData] = useState<FormData>({
     text: '',
@@ -65,37 +66,29 @@ export function FormExample() {
     }));
   };
 
-  const handleCancel = () => {
-    navigate(-1);
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     alert('Form submitted! Check console for data.');
-    navigate(-1);
+    goBack();
   };
 
   return (
     <div className="flex flex-col h-screen bg-gray-50 dark:bg-black">
-      {/* Top Navbar */}
-      <header className="flex items-center justify-between px-4 py-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 safe-top">
-        <button
-          onClick={handleCancel}
-          className="flex items-center justify-center px-4 py-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg transition-opacity no-select active:scale-95 transition-transform"
-          aria-label="Cancel"
-        >
-          <span className="text-blue-600 dark:text-blue-400 font-medium">Cancel</span>
-        </button>
-        <h1 className="text-lg font-semibold text-gray-900 dark:text-white">Form Example</h1>
-        <button
-          onClick={handleSubmit}
-          className="flex items-center justify-center px-4 py-2 bg-blue-600/90 dark:bg-blue-500/90 backdrop-blur-sm rounded-full shadow-lg transition-opacity no-select active:scale-95 transition-transform"
-          aria-label="Submit"
-        >
-          <span className="text-white font-medium">Submit</span>
-        </button>
-      </header>
+      {/* Navbar with custom actions */}
+      <Navbar
+        title="Form Example"
+        showBackButton={false}
+        rightAction={
+          <button
+            onClick={handleSubmit}
+            className="flex items-center justify-center px-4 py-2 bg-blue-600/90 dark:bg-blue-500/90 backdrop-blur-sm rounded-full shadow-lg transition-opacity no-select active:scale-95 transition-transform"
+            aria-label="Submit"
+          >
+            <span className="text-white font-medium">Submit</span>
+          </button>
+        }
+      />
 
       {/* Form Content */}
       <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto scroll-area">

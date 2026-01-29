@@ -1,5 +1,4 @@
-import { useNavigate } from 'react-router';
-import { useNavigation } from '../contexts/NavigationContext';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const items = [
   { id: 'trending', title: 'Trending Topics', description: 'See what\'s hot right now' },
@@ -10,19 +9,14 @@ const items = [
 ];
 
 export function Explore() {
-  const navigate = useNavigate();
-  const { setNavType } = useNavigation();
+  const { goForward, openModal } = useAppNavigation();
 
   const handleItemClick = (id: string) => {
-    setNavType('forward');
-    navigate(`/explore/${id}`);
+    goForward(`/explore/${id}`);
   };
 
   const handleModalDemo = () => {
-    setNavType('modal');
-    navigate('/modal-demo', {
-      state: { navType: 'modal' }
-    });
+    openModal('/modal-demo');
   };
 
   return (

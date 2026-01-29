@@ -1,4 +1,5 @@
 import { useParams } from 'react-router';
+import { Navbar } from '../components/Navbar';
 
 const categoryData: Record<string, { icon: string; title: string; description: string }> = {
   trending: {
@@ -46,6 +47,8 @@ export function ExploreDetail() {
 
   return (
     <div className="h-full scroll-area">
+      <Navbar title={data.title} />
+      
       <div className="safe-top safe-x">
         <div className="pt-8">
           <div className="text-center mb-8">

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { useNavigation } from '../contexts/NavigationContext';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const featureCategories = [
   {
@@ -147,13 +146,19 @@ const featureCategories = [
         name: 'Back Button',
         description: 'Context-aware back navigation',
         status: 'implemented',
-        demo: 'Appears on detail pages automatically'
+        demo: 'Try navbar examples'
       },
       {
         name: 'Modal Component',
         description: 'Reusable modal with backdrop',
         status: 'implemented',
         demo: 'Modal demo shows different types'
+      },
+      {
+        name: 'Reusable Navbar',
+        description: 'Flexible navbar component with back button',
+        status: 'implemented',
+        demo: 'Try navbar examples'
       },
       {
         name: 'Card Components',
@@ -198,8 +203,7 @@ const featureCategories = [
 ];
 
 export function Features() {
-  const navigate = useNavigate();
-  const { setNavType } = useNavigation();
+  const { goForward } = useAppNavigation();
   const [expandedCategory, setExpandedCategory] = useState<string | null>('navigation');
 
   const toggleCategory = (categoryId: string) => {
@@ -208,18 +212,21 @@ export function Features() {
 
   const handleDemoClick = (demoPath?: string) => {
     if (demoPath) {
-      setNavType('forward');
       // Simple navigation based on demo description
       if (demoPath.includes('Modal Demo')) {
-        navigate('/modal-demo');
+        goForward('/modal-demo');
       } else if (demoPath.includes('Form Example')) {
-        navigate('/form-example');
+        goForward('/form-example');
+      } else if (demoPath.includes('Custom Back')) {
+        goForward('/custom-back');
+      } else if (demoPath.includes('Navbar Example')) {
+        goForward('/navbar-example');
       } else if (demoPath.includes('Explore')) {
-        navigate('/explore');
+        goForward('/explore');
       } else if (demoPath.includes('Profile')) {
-        navigate('/profile');
+        goForward('/profile');
       } else if (demoPath.includes('Home')) {
-        navigate('/home');
+        goForward('/home');
       }
     }
   };

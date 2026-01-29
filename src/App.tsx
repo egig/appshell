@@ -10,6 +10,8 @@ import { ProfileSettings } from './pages/ProfileSettings';
 import { ModalDemo } from './pages/ModalDemo';
 import { FormExample } from './pages/FormExample';
 import { Features } from './pages/Features';
+import { CustomBackExample } from './pages/CustomBackExample';
+import { NavbarExample } from './pages/NavbarExample';
 import { PageTransition } from './components/PageTransition';
 import { useLocation } from 'react-router';
 import { NavigationProvider } from './contexts/NavigationContext';
@@ -97,6 +99,22 @@ function AppRoutes() {
           <Route
             path="form-example"
             element={<FormExample />}
+          />
+          <Route
+            path="custom-back"
+            element={
+              <PageTransition>
+                <CustomBackExample />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="navbar-example"
+            element={
+              <PageTransition>
+                <NavbarExample />
+              </PageTransition>
+            }
           />
         </Route>
       </Routes>

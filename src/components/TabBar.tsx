@@ -1,4 +1,5 @@
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const tabs = [
   { path: '/home', label: 'Home', icon: '🏠' },
@@ -9,19 +10,14 @@ const tabs = [
 
 export function TabBar() {
   const location = useLocation();
-  const navigate = useNavigate();
+  const { goToTab } = useAppNavigation();
 
   const getIsActive = (tabPath: string) => {
     return location.pathname.startsWith(tabPath);
   };
 
   const handleTabClick = (path: string) => {
-    navigate(path, {
-      state: {
-        navType: 'tab',
-        depth: 0,
-      },
-    });
+    goToTab(path);
   };
 
   return (

@@ -1,5 +1,4 @@
-import { useNavigate } from 'react-router';
-import { useNavigation } from '../contexts/NavigationContext';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const menuItems = [
   { id: 'settings', title: 'Account Settings', description: 'Manage your account preferences' },
@@ -9,17 +8,14 @@ const menuItems = [
 ];
 
 export function Profile() {
-  const navigate = useNavigate();
-  const { setNavType } = useNavigation();
+  const { goForward } = useAppNavigation();
 
   const handleItemClick = (id: string) => {
-    setNavType('forward');
-    navigate(`/profile/${id}`);
+    goForward(`/profile/${id}`);
   };
 
   const handleFormExample = () => {
-    setNavType('forward');
-    navigate('/form-example');
+    goForward('/form-example');
   };
 
   return (
